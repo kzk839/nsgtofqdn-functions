@@ -2,7 +2,7 @@
 param($Timer)
 
 # Resolve SendGrid FQDN
-$result = [system.net.dns]::GetHostByName($env:TARGET_FQDN).AddressList.IPAddressToString
+$result = [system.net.dns]::GetHostEntry($env:TARGET_FQDN).AddressList.IPAddressToString
 
 # Update NSG RUle
 $SetNSG = Get-AzNetworkSecurityGroup -Name $env:NSG_NAME -ResourceGroupName $env:NSG_RESOURCEGROUP `
